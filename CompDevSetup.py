@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 """
 Tyler Filko
 10/30/18
@@ -7,32 +9,39 @@ Need to download Github repo before beginning (save in home)
 
 import subprocess
 
-def MacDevSetup():
+def mac_dev_setup():
     #Install Homebrew to usr directory
-    subprocess.run('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+    try:
+        print("Updating Homebrew")
+        subprocess.check_call(['brew', 'update'])
+    except subprocess.CalledProcessError:
+        print("installing Homebrew")
+        subprocess.check_call('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', shell=True)
 
-    #Install Pyenv via Homebrew
-    subprocess.run('brew update')
-    subprocess.run('brew install pyenv')
+    print("Installing pyenv")
+    subprocess.call(['brew', 'install', 'pyenv'])
 
-    #Install Pyenv-virtualenv
-    subprocess.run('brew install pyenv-virtualenv')
+    print("Install Pyenv-virtualenv")
+    subprocess.call(['brew', 'install', 'pyenv-virtualenv'])
 
-    #Install direnv
-    subprocess.run('brew install direnv')
+    print("Install direnv")
+    subprocess.call(['brew', 'install', 'direnv'])
 
     #Copy and save pythonrc.py file on usr home
-    subprocess.run('cp pythonrc.py ./Users/tafilko/DevelopmentSetup')        #can i do this? ,
-
+    # print('Creating pythonrc.py simlink')
+    # subprocess.check_call(['ln', '-s', '/Users/tafilko/DevelopmentSetup/pythonrc.py', '/Users/tafilko/pythonrc.py'])
+    #
     #Updating Bash profile
     #Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
+    print("Updating .bash_profile")
+    subprocess.call(['cat', '/Users/tafilko/', '|','pbcopy'])
     try:
-        subprocess.run('open .bash_profile')
-    except:
-        subprocess.run('sudo chmod 664 .bash_profile')
-        subprocess.run('open .bash_profile')
-    finally:
-        subrocess.run('cat /Users/tafilko | pbcopy')
-        subprocess.run('pdpaste > /User/tafilko/.bash_profile')
+        subprocess.call(['pdpaste', '>', '/User/tafilko/.bash_profile'])
+    except subprocess.CalledProcessError:
+        subprocess.call_check(['sudo chmod 664', '.bash_profile'])
+        subprocess.call(['pdpaste', '>', '/User/tafilko/.bash_profile'])
 
     print("you are all set to go")
+
+if __name__ == '__main__':
+    mac_dev_setup()
