@@ -1,0 +1,68 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# If this is set, an argument to the cd builtin command that is not a directory is assumed to be the name of a variable whose value is the directory to change to.
+# shopt -s cdable_vars
+# Autocorrect typos in path names when using `cd`
+# shopt -s cdspell
+# If this is set, Bash checks that a command found in the hash table exists before trying to execute it. If a hashed command no longer exists, a normal path search is performed.
+# shopt -s checkhash
+# If set, Bash checks the window size after each command and, if necessary, updates the values of LINES and COLUMNS.
+# shopt -s checkwinsize
+# If set, Bash attempts to save all lines of a multiple-line command in the same history entry. This allows easy re-editing of multi-line commands.
+# shopt -s cmdhist
+# If set, the extended pattern matching features described above (see Pattern Matching) are enabled.
+# shopt -s extglob
+# If set, the history list is appended to the file named by the value of the HISTFILE variable when the shell exits, rather than overwriting the file.
+# shopt -s histappend
+# If set, and Readline is being used, a user is given the opportunity to re-edit a failed history substitution.
+# shopt -s histreedit
+# If set, and Readline is being used, the results of history substitution are not immediately passed to the shell parser. Instead, the resulting line is loaded into the Readline editing buffer, allowing further modification.
+# shopt -s histverify
+# If set, and Readline is being used, Bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line.
+# shopt -s no_empty_cmd_completion
+# If set, Bash matches filenames in a case-insensitive fashion when performing filename expansion.
+# shopt -s nocaseglob
+
+# Prevent accidentally clobbering files.
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+
+# when leaving the console clear the screen to increase privacy
+if [ "$SHLVL" = 1 ]; then
+    [ -x /usr/bin/clear ] && /usr/bin/clear -q
+fi
+
+# Add tab completion for many Bash commands
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# Bash History options
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+export HISTCONTROL=ignoredups
+export HISTIGNORE="&:bg:fg:ll:h"
+
+# Don't allow pip to run if there is no virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
+# Override the pip virtualenv requirement
+gpip() {
+    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
+
+# Setup for python 
+export PYTHONSTARTUP="$HOME"/pythonrc.py
+
+# Pyenv virtualenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Required for direnv to work
+eval "$(direnv hook bash)"
