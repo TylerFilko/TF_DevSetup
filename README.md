@@ -1,7 +1,7 @@
 # DevelopmentSetup for Mac OS X
 This python script works to install homebrew, pyenv, pyenv-virtualenv, direnv, pythonrc, and update user's bash_profile.
 
-##Features:##
+## Features:
 - Installs Homebrew, pyenv, Pyenv-virtualenv, direnv
     - This sets up your python dev environments
 - Creates pythonrc.py file (simlinked to automatically receive
@@ -9,15 +9,16 @@ This python script works to install homebrew, pyenv, pyenv-virtualenv, direnv, p
     - Python history, tab completion, pretty printing, and color
 - Updates .bash_profile with necessary hooks (Bash history, tab completion, python environment)
 
-##Note:##
+## Note:
 - Old bash profile will be copied and saved to $HOME/.bash_profile<date> and then will
 be replaced by bash_profile_template.txt
 
-##To Run:##
-code(
+## To Run:
+
+```python
 cd /path_to/DevelopmentSetup
 ./comp_dev_setup_Py2      (for mac)
-)
+```
 
 Enviornment Pages/Repos within script:
 
