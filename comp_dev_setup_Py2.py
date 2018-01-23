@@ -11,7 +11,7 @@ import subprocess
 import datetime
 
 def mac_dev_setup():
-    Install Homebrew to usr directory
+    # Install Homebrew to usr directory
     try:
         print("Updating Homebrew")
         subprocess.check_call(['brew', 'update'])
@@ -20,20 +20,30 @@ def mac_dev_setup():
         subprocess.check_call('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', shell=True,check=True)
 
     print("Installing pyenv")
-    subprocess.check_call(['brew', 'install', 'pyenv'])
+    try:
+        subprocess.check_call(['brew', 'install', 'pyenv'])
+    except subprocess.CalledProcessError:
+        print("You already have pyenv")
 
     print("Install Pyenv-virtualenv")
-    subprocess.check_call(['brew', 'install', 'pyenv-virtualenv'])
+    try:
+        subprocess.check_call(['brew', 'install', 'pyenv-virtualenv'])
+    except subprocess.CalledProcessError:
+        print("You already have Pyenv-virtualenv")
 
     print("Install direnv")
-    subprocess.check_call(['brew', 'install', 'direnv'])
+    try:
+        subprocess.check_call(['brew', 'install', 'direnv'])
+    except subprocess.CalledProcessError:
+        print("You already have direnv")
 
-    #Copy and save pythonrc.py file on usr home
+
+    # Copy and save pythonrc.py file on usr home
     print('Creating pythonrc.py simlink')
     subprocess.check_call(['ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
     subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
-    Updating Bash profile
-    Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
+    # Updating Bash profile
+    # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
 
     print("Updating .bash_profile")
     print('backing up .bash_profile as .bash_profile_YYYY_MM_DD at $Home directory')
