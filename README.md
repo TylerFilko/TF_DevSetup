@@ -50,7 +50,7 @@ cd /path_to/DevelopmentSetup
 ### Don't trip Dogg, we got you!
 #### Problem:
 1. When you open Python within your command window it should look like
-![https://github.com/TylerFilko/TF_DevSetup/blob/master/example_imgs/DevSetup_ex.png]
+![problem_img](https://github.com/TylerFilko/TF_DevSetup/blob/master/example_imgs/DevSetup_ex.png?raw=true)
  - If not, run this command and will all be ok
  ```bash
  sed '1 s/$/_HiStOrY_V2_/' $HOME/.pyhistory
