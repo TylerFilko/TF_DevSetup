@@ -9,6 +9,7 @@ This python script works to install homebrew, pyenv, pyenv-virtualenv, direnv, p
     - Python history, tab completion, pretty printing, and color
 - Updates .bash_profile with necessary hooks (Bash history, tab completion, python environment)
 
+
 ## Notes:
 - This runs using the users pre-installed python 2
 - Old bash profile will be copied and saved to $HOME/.bash_profile<date> and then will
