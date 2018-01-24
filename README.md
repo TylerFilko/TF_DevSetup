@@ -16,11 +16,13 @@ This python script works to install homebrew, pyenv, pyenv-virtualenv, direnv, p
 be replaced by bash_profile_template.txt
 
 ## To Run:
-
+1. Clone this repo into your home directory
+2. Run the setup script
 ```python
 cd /path_to/DevelopmentSetup
 ./comp_dev_setup_Py2      (for mac)
 ```
+3. Enjoy :)
 
 ## Setting Up Your Python Virtual Environment(s):
 
@@ -38,7 +40,6 @@ cd /path_to/DevelopmentSetup
     pyenv deactivate
 ```
 
-
 ### Linking Environment To Directory:
 ```bash
     cd <directory_to_link_to_env>
@@ -47,8 +48,20 @@ cd /path_to/DevelopmentSetup
 
 ## Trouble With Python Colors?
 ### Don't trip Dogg, we got you!
-#### Problem: when you open Python within your command window it should look like
-![]
+#### Problem:
+1. When you open Python within your command window it should look like
+![https://github.com/TylerFilko/TF_DevSetup/blob/master/example_imgs/DevSetup_ex.png]
+ - If not, run this command and will all be ok
+ ```bash
+ sed '1 s/$/_HiStOrY_V2_/' $HOME/.pyhistory
+ ```
+2. Is it just not running?
+- Did you clone the repo into your $HOME directory? If not sure, check
+```bash
+echo $HOME
+```
+
+
 
 Environment Pages/Repos within script:
 
