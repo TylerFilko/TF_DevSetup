@@ -66,7 +66,7 @@ def mac_dev_setup():
         subprocess.check_call(['cp','$HOME/.bash_profile',backuploc])
 
     print('Overwriting the old .bash_profile')
-    subprocess.check_call(['cat $HOME/DevelopmentSetup/bash_profile_template.txt > $HOME/.bash_profile'],shell=True)
+    subprocess.check_call(['cat $HOME/TF_DevSetup/bash_profile_template.txt > $HOME/.bash_profile'],shell=True)
 
     print("you are all set to go")
 
