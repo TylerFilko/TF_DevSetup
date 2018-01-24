@@ -40,16 +40,15 @@ def mac_dev_setup():
         print("You already have direnv")
 
 
-    # Copy and save pythonrc.py file on usr home
+    # Copy and save pythonrc.py and .inputrc file on usr home
     # If user doesn't have -wr access, this access is changed
-    print('Creating pythonrc.py simlink')
+    print('Creating ~/pythonrc.py and /etc/.inputrc simlink')
     try:
-        subprocess.check_call(['ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-        subprocess.check_call(['ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
+        subprocess.check_call(['ln -s $HOME//pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
     except subprocess.CalledProcessError:
-        subprocess.check_call(['sudo chmod 664 /etc/.inputrc'],shell=True)
-        subprocess.check_call(['ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-        subprocess.check_call(['ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
+        subprocess.check_call(['sudo ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.check_call(['sudo ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
 
     # Updating Bash profile
     # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
