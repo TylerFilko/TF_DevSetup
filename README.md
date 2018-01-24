@@ -45,6 +45,11 @@ cd /path_to/DevelopmentSetup
     pyenv local <environment_name>
 ```
 
+## Trouble With Python Colors?
+### Don't trip Dogg, we got you!
+#### Problem: when you open Python within your command window it should look like
+![]
+
 Environment Pages/Repos within script:
 
 - Homebrew: https://brew.sh/

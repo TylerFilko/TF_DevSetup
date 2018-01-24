@@ -40,15 +40,26 @@ def mac_dev_setup():
         print("You already have direnv")
 
 
-    # Copy and save pythonrc.py and .inputrc file on usr home
-    # If user doesn't have -wr access, this access is changed
+    # Copy and save pythonrc.py on usr home
+    # If user doesn't have -wr access, this is accomplished using sudo
     print('Creating ~/pythonrc.py and /etc/.inputrc simlink')
     try:
         subprocess.check_call(['ln -s $HOME//pythonrc.py $HOME/pythonrc.py'],shell=True)
-        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
     except subprocess.CalledProcessError:
         subprocess.check_call(['sudo ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+    except:
+        print("You already have pythonrc.py setup")
+
+    # Copy and save .inputrc file on usr home
+    # If user doesn't have -wr access, this accomplished using sudo
+    print('Creating /etc/.inputrc simlink')
+    try:
+        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+    except subprocess.CalledProcessError:
         subprocess.check_call(['sudo ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+    except:
+        print("You already have this stuff installed")
+
 
     # Updating Bash profile
     # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
