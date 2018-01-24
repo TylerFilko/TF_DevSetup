@@ -14,7 +14,7 @@ def mac_dev_setup():
     # Install Homebrew to usr directory
     try:
         print("Updating Homebrew")
-        subprocess.check_call(['brew', 'update'])
+        subprocess.check_call(['brew', 'update'], check=True)
     except:
         print("installing Homebrew")
         subprocess.check_call('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', shell=True)
