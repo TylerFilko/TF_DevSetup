@@ -44,12 +44,12 @@ def mac_dev_setup():
     # If user doesn't have -wr access, this access is changed
     print('Creating pythonrc.py simlink')
     try:
-        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+        subprocess.check_call(['ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.check_call(['ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
     except subprocess.CalledProcessError:
-        subprocess.check_call(['sudo chmod 664 $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True])
-        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+        subprocess.check_call(['sudo chmod 664 /etc/.inputrc'],shell=True)
+        subprocess.check_call(['ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.check_call(['ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
 
     # Updating Bash profile
     # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
@@ -67,7 +67,7 @@ def mac_dev_setup():
         subprocess.check_call(['cp','$HOME/.bash_profile',backuploc])
 
     print('Overwriting the old .bash_profile')
-    subprocess.check_call(['cat $HOME/DevelopmentSetup/bash_profile_template.txt > $HOME/.bash_profile'],shell=True)
+    subprocess.check_call(['cat $HOME/TF_DevSetup/bash_profile_template.txt > $HOME/.bash_profile'],shell=True)
 
     print("you are all set to go")
 
