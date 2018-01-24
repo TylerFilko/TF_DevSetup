@@ -14,12 +14,14 @@ def mac_dev_setup():
     # Install Homebrew to usr directory
     try:
         print("Updating Homebrew")
-        subprocess.check_call(['brew', 'update'])
-    except subprocess.CalledProcessError:
+        subprocess.check_call(['brew', 'update'], check=True)
+    except:
         print("installing Homebrew")
-        subprocess.check_call('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', shell=True,check=True)
+        subprocess.check_call('/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"', shell=True)
+
 
     print("Installing pyenv")
+
     try:
         subprocess.check_call(['brew', 'install', 'pyenv'])
     except subprocess.CalledProcessError:
@@ -39,9 +41,16 @@ def mac_dev_setup():
 
 
     # Copy and save pythonrc.py file on usr home
+    # If user doesn't have -wr access, this access is changed
     print('Creating pythonrc.py simlink')
-    subprocess.check_call(['ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-    subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+    try:
+        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+    except subprocess.CalledProcessError:
+        subprocess.check_call(['sudo chmod 664 $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True])
+        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.check_call(['ln -s $HOME/DevelopmentSetup/inputrc /etc/.inputrc'],shell=True)
+
     # Updating Bash profile
     # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
 
