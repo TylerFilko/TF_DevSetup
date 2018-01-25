@@ -44,22 +44,17 @@ def mac_dev_setup():
     # If user doesn't have -wr access, this is accomplished using sudo
     print('Creating ~/pythonrc.py and /etc/.inputrc simlink')
     try:
-        subprocess.check_call(['ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-    except subprocess.CalledProcessError:
         subprocess.check_call(['sudo ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
-    except:
+    except subprocess.CalledProcessError:
         print("You already have pythonrc.py setup or something under that name in that directory")
 
     # Copy and save .inputrc file on usr home
     # If user doesn't have -wr access, this accomplished using sudo
     print('Creating /etc/.inputrc simlink')
     try:
-        subprocess.check_call(['ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
-    except subprocess.CalledProcessError:
         subprocess.check_call(['sudo ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
-    except:
+    except subprocess.CalledProcessError:
         print("You already have .inputrc setup or something under that name in that directory")
-
 
     # Updating Bash profile
     # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
