@@ -20,7 +20,7 @@ be replaced by bash_profile_template.txt
 2. Run the setup script
 ```python
 cd /path_to/DevelopmentSetup
-./comp_dev_setup_Py2      (for mac)
+./comp_dev_setup_Py2.py      (for mac)
 ```
 3. Enjoy :)
 
