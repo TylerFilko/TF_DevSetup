@@ -46,22 +46,29 @@ cd /path_to/DevelopmentSetup
     pyenv local <environment_name>
 ```
 
-## Trouble With Python Colors?
+## Trouble/Problems?
 ### Don't trip Dogg, we got you!
-#### Problem:
+#### Problem & Possible Solutions:
 1. When you open Python within your command window it should look like
 ![problem_img](https://github.com/TylerFilko/TF_DevSetup/blob/master/example_imgs/DevSetup_ex.png?raw=true)
- - If not, run this command and will all be ok
+ - If not, run this command and will all be ok (hopefully)
  ```bash
  sed '1 s/$/_HiStOrY_V2_/' $HOME/.pyhistory
  ```
+    - For more info on this fix: https://stackoverflow.com/questions/17824898/why-does-readline-read-history-file-give-me-ioerror-errno-2-no-such-file-or
 2. Is it just not running?
-- Did you clone the repo into your $HOME directory? If not sure, check
+- Did you clone the repo into your $HOME directory? If not sure, check (command below displays home directory)
 ```bash
 echo $HOME
 ```
-
-
+- What branch did you grab? Was it 'master' ?
+```bash
+git branch
+```
+    the branch denoted by the asterisk is not master
+    ```bash
+    git checkout master
+    ```
 
 Environment Pages/Repos within script:
 

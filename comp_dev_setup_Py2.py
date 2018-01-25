@@ -48,7 +48,7 @@ def mac_dev_setup():
     except subprocess.CalledProcessError:
         subprocess.check_call(['sudo ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
     except:
-        print("You already have pythonrc.py setup")
+        print("You already have pythonrc.py setup or something under that name in that directory")
 
     # Copy and save .inputrc file on usr home
     # If user doesn't have -wr access, this accomplished using sudo
@@ -58,7 +58,7 @@ def mac_dev_setup():
     except subprocess.CalledProcessError:
         subprocess.check_call(['sudo ln -s $HOME/TF_DevSetup/inputrc /etc/.inputrc'],shell=True)
     except:
-        print("You already have this stuff installed")
+        print("You already have .inputrc setup or something under that name in that directory")
 
 
     # Updating Bash profile
