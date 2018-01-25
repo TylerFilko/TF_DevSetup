@@ -55,7 +55,7 @@ cd /path_to/DevelopmentSetup
  ```bash
  sed '1 s/$/_HiStOrY_V2_/' $HOME/.pyhistory
  ```
-    - For more info on this fix: https://stackoverflow.com/questions/17824898/why-does-readline-read-history-file-give-me-ioerror-errno-2-no-such-file-or
+- For more info on this fix: https://stackoverflow.com/questions/17824898/why-does-readline-read-history-file-give-me-ioerror-errno-2-no-such-file-or
 2. Is it just not running?
 - Did you clone the repo into your $HOME directory? If not sure, check (command below displays home directory)
 ```bash
