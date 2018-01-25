@@ -65,10 +65,10 @@ echo $HOME
 ```bash
 git branch
 ```
-    the branch denoted by the asterisk is not master
-    ```bash
-    git checkout master
-    ```
+If the branch denoted by the asterisk is not master
+```bash
+git checkout master
+```
 
 Environment Pages/Repos within script:
 
