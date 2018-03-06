@@ -16,11 +16,13 @@ This python script works to install homebrew, pyenv, pyenv-virtualenv, direnv, p
 be replaced by bash_profile_template.txt
 
 ## To Run:
-
+1. Clone this repo into your home directory
+2. Run the setup script
 ```python
 cd /path_to/DevelopmentSetup
-./comp_dev_setup_Py2      (for mac)
+./comp_dev_setup_Py2.py      (for mac)
 ```
+3. Enjoy :)
 
 ## Setting Up Your Python Virtual Environment(s):
 
@@ -38,11 +40,34 @@ cd /path_to/DevelopmentSetup
     pyenv deactivate
 ```
 
-
 ### Linking Environment To Directory:
 ```bash
     cd <directory_to_link_to_env>
     pyenv local <environment_name>
+```
+
+## Trouble/Problems?
+### Don't trip Dogg, we got you!
+#### Problem & Possible Solutions:
+1. When you open Python within your command window it should look like
+![problem_img](https://github.com/TylerFilko/TF_DevSetup/blob/master/example_imgs/DevSetup_ex.png?raw=true)
+ - If not, run this command and will all be ok (hopefully)
+ ```bash
+ sed '1 s/$/_HiStOrY_V2_/' $HOME/.pyhistory
+ ```
+- For more info on this fix: https://stackoverflow.com/questions/17824898/why-does-readline-read-history-file-give-me-ioerror-errno-2-no-such-file-or
+2. Is it just not running?
+- Did you clone the repo into your $HOME directory? If not sure, check (command below displays home directory)
+```bash
+echo $HOME
+```
+- What branch did you grab? Was it 'master' ?
+```bash
+git branch
+```
+If the branch denoted by the asterisk is not master
+```bash
+git checkout master
 ```
 
 Environment Pages/Repos within script:
