@@ -9,6 +9,9 @@ This python script works to install homebrew, pyenv, pyenv-virtualenv, direnv, p
     - Python history, tab completion, pretty printing, and color
 - Updates .bash_profile with necessary hooks (Bash history, tab completion, python environment)
 
+## Requirments:
+- git
+- Github
 
 ## Notes:
 - This runs using the users pre-installed python 2
@@ -18,7 +21,7 @@ be replaced by bash_profile_template.txt
 ## To Run:
 1. Clone this repo into your home directory
 2. Run the setup script
-```python
+```bash
 cd /path_to/DevelopmentSetup
 ./comp_dev_setup_Py2.py      (for mac)
 ```
