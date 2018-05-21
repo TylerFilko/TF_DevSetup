@@ -44,7 +44,7 @@ def mac_dev_setup():
     # If user doesn't have -wr access, this is accomplished using sudo
     print('Creating ~/pythonrc.py and /etc/.inputrc simlink')
     try:
-        subprocess.run(['sudo ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'],shell=True)
+        subprocess.run(['sudo ln -s $HOME/TF_DevSetup/pythonrc.py $HOME/pythonrc.py'], shell=True)
     except subprocess.CalledProcessError:
         print("You already have pythonrc.py setup or something under that name in that directory")
 
@@ -66,13 +66,13 @@ def mac_dev_setup():
 
     # If user doesn't have -wr access, this access is changed
     try:
-        subprocess.run(['cp $HOME/.bash_profile $HOME/.bash_profile{:s}'.format(date)],shell=True)
+        subprocess.run(['cp $HOME/.bash_profile $HOME/.bash_profile{:s}'.format(date)], shell=True)
     except subprocess.CalledProcessError:
-        subprocess.run(['sudo chmod 664 .bash_profile'],shell=True)
-        subprocess.run(['cp','$HOME/.bash_profile',backuploc])
+        subprocess.run(['sudo chmod 664 .bash_profile'], shell=True)
+        subprocess.run(['cp $HOME/.bash_profile $HOME/.bash_profile{:s}'.format(date)])
 
     print('Overwriting the old .bash_profile')
-    subprocess.run(['cat $HOME/TF_DevSetup/bash_profile_template.txt > $HOME/.bash_profile'],shell=True)
+    subprocess.run(['cat $HOME/TF_DevSetup/bash_profile_template.txt > $HOME/.bash_profile'], shell=True)
 
     print("you are all set to go")
 
