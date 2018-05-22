@@ -22,7 +22,9 @@ def mac_dev_setup():
     # Installing Atom-------------------------------------------------------------------------------
     try:
         print("Installing Atom")
-        subprocess.check_call('brew', 'install', 'atom')
+        subprocess.check_call(['brew', 'install', 'caskroom/cask/brew-cask'])
+        subprocess.check_call(['brew', 'cask', 'install'])
+
     except subprocess.CalledProcessError:
         print("Seems you already have Atom, or the script is breaking on Atom install")
 
