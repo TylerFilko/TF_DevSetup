@@ -56,6 +56,31 @@ def mac_dev_setup():
     except subprocess.CalledProcessError:
         print("You already have .inputrc setup or something under that name in that directory")
 
+    # Golang Stuff
+    print("Install Golang and associated packages? (yes/no)")
+    go_install_bol = input()
+    if go_install_bol == 'yes':
+        print("Installing Golang\nUncomment related Golang paths in $HOME/.bash_profile")
+        try:
+            subprocess.run(['mkdir', '$HOME/Go'])
+            subprocess.run(['-p', "$HOME/Go/src/github.com/user"])
+        except subprocess.CalledProcessError:
+            print("You already have directories for Go")
+
+        try:
+            subprocess.run(['brew', 'install', 'go'])
+            subprocess.run(['go', 'get', 'golang.org/x/tools/cmd/godoc'])
+            print("If you are new to GoLang, or just want a refresher visit https://golang.org/doc/code.html")
+        except:
+            print("You likely already have Go installed along with the basic associated packages")
+
+        print("In that case you want a bit of a tour of Go, or a more intensive refresher enter 'yes'\n\
+              (yes/no):")
+        go_tour_bol = input()
+        if go_tour_bol == 'yes':
+            subprocess.run(['go', 'tool', 'tour'])
+
+
     # Updating Bash profile
     # Except catches if user doesn't have access to .bash_profile file, updates so user has read/write ability
 

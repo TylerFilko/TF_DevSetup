@@ -57,7 +57,7 @@ gpip() {
     PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
-# Setup for python 
+# Setup for python
 export PYTHONSTARTUP="$HOME"/pythonrc.py
 
 # Pyenv virtualenv
@@ -66,3 +66,11 @@ eval "$(pyenv virtualenv-init -)"
 
 # Required for direnv to work
 eval "$(direnv hook bash)"
+
+
+
+# Golang Env Variables
+# export GOPATH=$HOME/Go
+# export GOROOT=/usr/local/opt/go/libexec
+# export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$GOROOT/bin
