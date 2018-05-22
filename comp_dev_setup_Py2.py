@@ -74,9 +74,9 @@ def mac_dev_setup():
     date = time[0:10].replace('-','_')
 
     try:
-        subprocess.check_call(['open', '$HOME/.bash_profile'])
+        subprocess.check_call(['open $HOME/.bash_profile'],shell=True)
     except:
-        subprocess.check_call(['touch', '$HOME/.bash_profile'])
+        subprocess.check_call(['touch $HOME/.bash_profile'],shell=True)
 
     # If user doesn't have -wr access, this access is changed
     try:
