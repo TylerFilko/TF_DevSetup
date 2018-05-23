@@ -22,10 +22,16 @@ def mac_dev_setup():
     # Installing Atom-------------------------------------------------------------------------------
     try:
         print("Installing Atom")
-        subprocess.check_call(['brew', 'install', 'caskroom/cask/brew-cask'])
-        subprocess.check_call(['brew', 'cask', 'install'])
+        subprocess.check_call(['sudo', 'chown', '-R', '$(whoami)', '/usr/local/var/homebrew'])
+        subprocess.check_call(['brew', 'tap', 'caskroom/cask/brew-cask'])
+        subprocess.check_call(['brew', 'cask', 'install', 'atom'])
 
     except subprocess.CalledProcessError:
+        print("Installing Atom, permissions requrired for brew to tap caskroom/cask/brew-cask (chown)")
+        subprocess.check_call(['sudo', 'chown', '-R', ''])
+        subprocess.check_call(['brew', 'tap', 'caskroom/cask/brew-cask'])
+        subprocess.check_call(['brew', 'cask', 'install', 'atom'])
+
         print("Seems you already have Atom, or the script is breaking on Atom install")
 
     # Installing pyenv------------------------------------------------------------------------------
