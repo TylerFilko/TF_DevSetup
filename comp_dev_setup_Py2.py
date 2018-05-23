@@ -94,6 +94,14 @@ def mac_dev_setup():
     print('Overwriting the old .bash_profile')
     subprocess.check_call(['cat $HOME/TF_DevSetup/bash_profile_template.txt > $HOME/.bash_profile'],shell=True)
 
+    try:
+        print('ec2metadata-role-assumption installing\n\
+              This repository allows for easy AWS role assumption.\n\
+              For more info visit https://github.com/farrellit/ec2metadata-role-assumption')
+        subprocess.check_call(['git', 'clone', 'git@github.com:farrellit/ec2metadata-role-assumption.git'])
+    except:
+        print('ec2metadata-role-assumption failed to clone')
+
     print("you are all set to go")
 
 if __name__ == '__main__':
