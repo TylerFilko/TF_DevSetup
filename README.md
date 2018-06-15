@@ -31,8 +31,19 @@ python comp_dev_setup_Py2.py      (for mac)
 
 ### Creating Environment:
 ```bash
-    pyenv virtual-env <python_version> <environment_name>
+    pyenv virtualenv <python_version> <environment_name>
 ```
+##### Installing Python versions for pyenv: 
+If you don't have python versions installed spesifically for pyenv you can run 
+```bash
+pyenv install -l
+```
+to view the versions available and then 
+```bash
+pyenv install <version> 
+``` 
+to install the version of your choosing
+
 
 ### Activating Virtual Environment:
 ```bash
