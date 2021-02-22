@@ -55,6 +55,12 @@ def mac_dev_setup():
     except subprocess.CalledProcessError:
         print("You already have direnv")
 
+    # Installing golang-----------------------------------------------------------------------------
+    print("Install golang")
+    try:
+        subprocess.check_call(['brew', 'install', 'go'])
+    except subprocess.CalledProcessError:
+        print("You already have golang")
 
     # Copy and save pythonrc.py on usr home---------------------------------------------------------
     # If user doesn't have -wr access, this is accomplished using sudo
@@ -101,6 +107,19 @@ def mac_dev_setup():
         subprocess.check_call(['git', 'clone', 'git@github.com:farrellit/ec2metadata-role-assumption.git'])
     except:
         print('ec2metadata-role-assumption failed to clone')
+
+    # Installing emacs+spacemacs extension---------------------------------------------------------
+    try:
+        print('Installing Spacemacs')
+        subprocess.check_call(['brew', 'install', 'emacs'])
+    except subprocess.CalledProcessError:
+        print("You already have emacs")
+        
+    try:
+        print('Installing Spacemacs')
+        subprocess.check_call(['git', 'clone', 'git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d'])
+    except subprocess.CalledProcessError:
+        print("You already have spacemacs")
 
     print("you are all set to go")
 
